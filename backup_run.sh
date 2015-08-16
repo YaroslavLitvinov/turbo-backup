@@ -8,11 +8,9 @@ fi
 
 source `dirname $(readlink -f $0)`/source.sh
 
-###################################################
-####LAST_TURBO_BACKUP_FILEPATH defined in ~/.bashrc
-###################################################
-
-DBNAME=test
+cd $TURBO_BACKUP_FOLDER
+git status
+git pull origin master
 
 ###################################################
 ####save DB to backup file and then compare it with
@@ -20,7 +18,6 @@ DBNAME=test
 ###################################################
 
 mysqldump -uroot -p1q2w3e --databases $DBNAME > $LAST_TURBO_BACKUP_FILEPATH
-#mysqldump -uroot -p1q2w3e --all-databases > $LAST_TURBO_BACKUP_FILEPATH
 
 echo "Saved "`du -bh $LAST_TURBO_BACKUP_FILEPATH`
 
